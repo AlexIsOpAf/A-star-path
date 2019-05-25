@@ -1,0 +1,6 @@
+#This is for me on how to run the build procedure
+#cmake ..
+#make
+
+You can replace the make line with cmake --build . if you'd like, and it will call make or whatever build tool you are using. 
+You can follow it by make install or cmake --build . --target install if you want to install it.

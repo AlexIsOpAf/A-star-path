@@ -3,27 +3,6 @@
 #include <vector>
 #include <utility>
 
-// **************************************************************
-// *************************************************************
-/*
-    Create a Matrix Class
-
-
-
-
-
-
-    Because of the vectors ability to dynamically grow, Every member
-    method will be const qualified, We don't want the vector to re-size
-    even by accident.
-
-
-*/
-// **************************************************************
-// **************************************************************
-
-
-
 class Matrix {
 
 private:
