@@ -2,7 +2,7 @@
 
 Re-creation of popular A* pathfinding algorithm abstracted into classes
 
-##Installation
+#Installation
 
 C-make will be added when possible to run on most operating systems and environments
 
