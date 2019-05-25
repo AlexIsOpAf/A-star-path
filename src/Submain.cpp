@@ -214,22 +214,7 @@ int main () {
     end.y = 14;
     Matrix m {matrix.x,matrix.y};
     Node node {start.x, start.y, end.x, end.y};
-
     
-
-    // create_blocked_areas(m, node, 3 , 12);
-    // create_blocked_areas(m, node, 4, 12);
-    // create_blocked_areas(m, node, 5, 12);
-    // create_blocked_areas(m, node, 6, 12);
-    // create_blocked_areas(m, node, 7, 12);
-    // create_blocked_areas(m, node, 8, 12);
-    // create_blocked_areas(m, node, 9, 12);
-    // create_blocked_areas(m, node, 10, 12);
-    // create_blocked_areas(m, node, 11, 12);
-    // create_blocked_areas(m, node, 12, 12);
-    // create_blocked_areas(m, node, 13, 12);
-    // create_blocked_areas(m, node, 14, 12);
-
     bool check = false;
 
     while (node.check() != true && path_is_unreachable != true){
