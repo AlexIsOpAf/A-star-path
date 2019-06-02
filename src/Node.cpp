@@ -22,7 +22,7 @@ traversalInformation { std::make_tuple(0, 0, 0,0,0)} {
     When Node class is created, we create 2 *temps on the heap
     Rootnode is equivalent to "HEAD"
     Targetnode is equivalent to "TAIL"
-    Because it's not always certain that we can reach target, we need a Currentnode
+    Because it's not always certain that we can reach target, we need a Currentnode to check the state
     as an iterator
 */
 void Node::assign_nodes(){
@@ -60,13 +60,11 @@ void Node::add_node() {
     currentNode = temp;
     targetNode->prev = temp;
 
-    //X coordinates
     currentNode->f = std::get<cost>(traversalInformation);
     currentNode->g = std::get<g_val>(traversalInformation);
     currentNode->h = std::get<h_val>(traversalInformation);
 
     currentNode->coordinateValues.first = std::get<x_val>(traversalInformation);
-    //Y coordinates
     currentNode->coordinateValues.second = std::get<y_val>(traversalInformation);
     if (currentNode->coordinateValues == targetNode->coordinateValues){
         currentNode = targetNode;
@@ -82,8 +80,8 @@ void Node::add_node() {
 void Node::pop_node() {
     NodeStruct *temp = new NodeStruct;
 
-    std::cout << "Popping off : " << currentNode->coordinateValues.first << ' ';
-    std::cout << currentNode->coordinateValues.second << std::endl;
+    // std::cout << "Popping off : " << currentNode->coordinateValues.first << ' ';
+    // std::cout << currentNode->coordinateValues.second << std::endl;
 
     temp = currentNode;
     currentNode = temp->prev;
@@ -93,9 +91,9 @@ void Node::pop_node() {
     temp->next = nullptr;
     delete temp;
 
-    std::cout << "Position Current is atlea: " << currentNode->coordinateValues.first << ' ' << 
-    currentNode->coordinateValues.second << "\nNode's values(F,G,H): " << currentNode->f 
-    << ' ' <<  currentNode->g << ' ' << currentNode->h << std::endl; 
+    // std::cout << "Position Current is atlea: " << currentNode->coordinateValues.first << ' ' << 
+    // currentNode->coordinateValues.second << "\nNode's values(F,G,H): " << currentNode->f 
+    // << ' ' <<  currentNode->g << ' ' << currentNode->h << std::endl; 
 
     store_traversal_cost(currentNode->coordinateValues.first,currentNode->coordinateValues.second,
     currentNode->f, currentNode->g, currentNode->h);
@@ -145,7 +143,6 @@ bool Node::check()const {
 }
 
 Node::~Node() {  
-    // NodeStruct *temp = new NodeStruct;
     NodeStruct *temp = new NodeStruct;
     while (rootNode != targetNode){
         temp = rootNode->next;

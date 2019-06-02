@@ -7,8 +7,8 @@ Matrix::Matrix() : Matrix{3,3} {
 
 //  Don't want to create an empty vector, THEN, re-size it. Not an efficient approach
 //  We can create it with a fixed size using an init list. 
-Matrix::Matrix(int row, int col)
-    : _X{row}, _Y{col}, sourceMatrix {std::vector<std::vector<int>>(_X, std::vector<int>(_Y,0))}{
+Matrix::Matrix(unsigned int row, unsigned int col)
+    : _X{row}, _Y{col}, sourceMatrix {std::vector<std::vector<unsigned int>>(_X, std::vector<unsigned int>(_Y,0))}{
     std::cout << "\nOverloaded Created" << std::endl;
     
 }
@@ -52,4 +52,11 @@ void Matrix::display_matrix() const {
             std::cout << "|   " << sourceMatrix.at(i).at(j) << "   |";
         }
     }
+
+    // for (const auto &row : sourceMatrix){
+    //     std::cout << '\n';
+    //     for (const auto& col : row)
+    //         std::cout << "|   " << sourceMatrix.at(i).at(j) << "   |";
+    // }
+
 }

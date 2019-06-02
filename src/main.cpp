@@ -3,9 +3,12 @@
 #include <utility>
 #include <algorithm>
 #include <tuple>
+#include <OpenGL/gl3.h>
+#include <GLFW/glfw3.h>
 
 #include "Matrix.h"
 #include "Node.h"
+#include "OpenGLScreenMain.h"
 
 struct Point
 {
@@ -47,7 +50,8 @@ very simple and readable, but will sacrifice some space complexity for that simp
 void link_node_and_matrix(Matrix &m, Node &node){
     node.store_critical_path();
     m.read_in_path(node.get_path());
-
+    m.color_in_path();
+    m.display_matrix();
 }
 
 inline bool check_bounds(int x, int y, const Matrix &m) {
@@ -165,12 +169,9 @@ bool run_on_adjacent_positions(Point &p, Node &node, Matrix &m){
     //(2) = Next node's Y_ value
     //(3) = Node's G value
     //(4) = Node's H value
-    if (p.x == 13 && p.y == 11){
-        std::cout << " Here " <<std::endl;
-    }
     std::vector<std::tuple<int, int, int, int, int>> f_cost;
     f_cost.reserve(8);
-
+    //We need to find a better way to represent the traversals in an algorithm
     f_cost.push_back(calculate_cost_of_traversal(p.x + 1, p.y + 1, node, m));
     f_cost.push_back(calculate_cost_of_traversal(p.x - 1, p.y - 1, node, m));
     f_cost.push_back(calculate_cost_of_traversal(p.x + 1, p.y - 1, node, m));
@@ -199,20 +200,20 @@ bool run_on_adjacent_positions(Point &p, Node &node, Matrix &m){
     return false;
 }
 
-int main () {
+int main (){
 
-    Point matrix;
-    Point start;
-    Point end;
-
+    Point matrix,start,end;
+    //Size of board
     matrix.x = 15;
     matrix.y = 15;
-
+    //Start coordinates
     start.x = 0;
     start.y = 0;
+    //End Coordinates specified by the user
     end.x = 14;
     end.y = 14;
-    Matrix m {matrix.x,matrix.y};
+
+    Matrix m {(unsigned int)matrix.x, (unsigned int)matrix.y};
     Node node {start.x, start.y, end.x, end.y};
     
     bool check = false;
@@ -221,13 +222,17 @@ int main () {
         check = run_on_adjacent_positions(start, node,m);
         update_point(start, node);
         if (check == true)
-            node.add_node();
-        
+            node.add_node();   
     }
-    
     link_node_and_matrix(m,node);
-    m.color_in_path();
-    m.display_matrix();
+    
+    // Right now we are just instructing OpenGL to display an abritrary board
+    //In the future we can process the information the user has entered and pass it into 
+    //gl::main to process the representation
+
+    // if (mygl::mygl_main() == 0){
+    //     std::cout << "OpenGL has recieved the information" << std::endl;
+    // }
     
 
         
