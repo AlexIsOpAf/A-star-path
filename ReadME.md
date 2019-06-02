@@ -1,4 +1,4 @@
-# Project Title
+# A* Pathfinding Algorithm
 
 Recreated the Popular A* pathfinding algorithm and abstracted into classes for re-usability, The main goal of this project was to get familliar with my fundamentals like const-correctness and referencing to really try and create a good representation of my skills. 
 
