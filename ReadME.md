@@ -26,3 +26,11 @@ Optimise and clean code
 Learn how to use Cmake well 
 
 Conform to my initial architecture -- [Architecture](https://gyazo.com/8673c4d300568aef754ac4497f26d4ef)
+
+## Installation
+
+```bash
+git clone https://github.com/AlexIsOpAf/A-star-path.git
+g++ -Wall -Wextra -Wpedantic -std=c++17 src/main.cpp src/Matrix.cpp src/Node.cpp -I includes/
+./a.out
+```
