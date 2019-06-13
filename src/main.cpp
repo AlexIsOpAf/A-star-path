@@ -202,18 +202,27 @@ bool run_on_adjacent_positions(Point &p, Node &node, Matrix &m){
 
 int main (){
 
-    Point matrix,start,end;
+    Point matrix,start,end;  
     //Size of board
-    matrix.x = 15;
-    matrix.y = 15;
+    std::cout << "How big do you want your board" << std::endl;
+    std::cout << "Row: ";
+    std::cin >> matrix.x;
+    std::cout << "Columns: ";
+    std::cin >> matrix.y;
+    
     //Start coordinates
-    start.x = 0;
-    start.y = 0;
+    Matrix m {matrix.x,matrix.y};
+    do {
+        std::cout << "Enter within bounds " << std::endl;
+        std::cout << "Specify which coordinates you want to start from >> for e.g 0 0: ";
+        std::cin >> start.x >> start.y;
+        std::cout << "Specify which coordinates you want to end from >> for e.g 2 3: ";
+        std::cin >> end.x >> end.y;
+    } while (check_bounds(start.x, start.y, m) && check_bounds(end.x, end.y, m));
     //End Coordinates specified by the user
-    end.x = 14;
-    end.y = 14;
+    
 
-    Matrix m {(unsigned int)matrix.x, (unsigned int)matrix.y};
+    
     Node node {start.x, start.y, end.x, end.y};
     
     bool check = false;
@@ -226,6 +235,8 @@ int main (){
     }
     link_node_and_matrix(m,node);
     
+
+
     // Right now we are just instructing OpenGL to display an abritrary board
     //In the future we can process the information the user has entered and pass it into 
     //gl::main to process the representation
@@ -235,7 +246,7 @@ int main (){
     // }
     
 
-        
+    std::cout << std::endl;
 
     return 0;
 }

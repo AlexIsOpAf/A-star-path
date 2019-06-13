@@ -7,19 +7,13 @@ Matrix::Matrix() : Matrix{3,3} {
 
 //  Don't want to create an empty vector, THEN, re-size it. Not an efficient approach
 //  We can create it with a fixed size using an init list. 
-Matrix::Matrix(unsigned int row, unsigned int col)
-    : _X{row}, _Y{col}, sourceMatrix {std::vector<std::vector<unsigned int>>(_X, std::vector<unsigned int>(_Y,0))}{
-    std::cout << "\nOverloaded Created" << std::endl;
+Matrix::Matrix(int row,  int col)
+    : _X{row}, _Y{col}, sourceMatrix {std::vector<std::vector< int>>(_X, std::vector<int>(_Y,0))}{
     
 }
 
 void Matrix::read_in_path(const std::vector<std::pair<int,int>> &path ) {
     criticalPath = path;
-
-    std::cout << "In Matrix!!" << std::endl;
-    for (const auto &item : criticalPath){
-        std::cout << "Coordinates: " << item.first << ' ' << item.second << std::endl;
-    }
 }
 
 int Matrix::get_col() const {return _Y;}
@@ -39,7 +33,6 @@ void Matrix::create_blocked_cells(int x, int y) {
 }
 
 Matrix::~Matrix() {
-    std::cout << "\nDestructor called" << std::endl;
 }
 
 void Matrix::display_matrix() const {

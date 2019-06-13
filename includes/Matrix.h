@@ -9,12 +9,12 @@ private:
     
     //Use these variables to interract with matrix indicies
     //
-    unsigned int _X, _Y; 
-    std::vector<std::vector<unsigned int >> sourceMatrix;
+    int _X, _Y; 
+    std::vector<std::vector<int >> sourceMatrix;
     std::vector<std::pair<int,int>> criticalPath;
 public:
     Matrix();
-    Matrix(unsigned int row, unsigned int col);
+    Matrix(int row, int col);
     ~Matrix();
     void display_matrix() const;
     void read_in_path(const std::vector<std::pair<int, int>> &);

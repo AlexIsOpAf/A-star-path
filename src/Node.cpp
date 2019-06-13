@@ -69,10 +69,6 @@ void Node::add_node() {
     if (currentNode->coordinateValues == targetNode->coordinateValues){
         currentNode = targetNode;
     }
-
-    std::cout << "Position Added: " << currentNode->coordinateValues.first << ' ' << 
-    currentNode->coordinateValues.second << "\nNode's values(F,G,H): " << currentNode->f 
-    << ' ' <<  currentNode->g << ' ' << currentNode->h << std::endl; 
 }
 
 //Because this is a doubly linked list
@@ -80,8 +76,6 @@ void Node::add_node() {
 void Node::pop_node() {
     NodeStruct *temp = new NodeStruct;
 
-    // std::cout << "Popping off : " << currentNode->coordinateValues.first << ' ';
-    // std::cout << currentNode->coordinateValues.second << std::endl;
 
     temp = currentNode;
     currentNode = temp->prev;
@@ -90,10 +84,6 @@ void Node::pop_node() {
     targetNode->prev = currentNode;
     temp->next = nullptr;
     delete temp;
-
-    // std::cout << "Position Current is atlea: " << currentNode->coordinateValues.first << ' ' << 
-    // currentNode->coordinateValues.second << "\nNode's values(F,G,H): " << currentNode->f 
-    // << ' ' <<  currentNode->g << ' ' << currentNode->h << std::endl; 
 
     store_traversal_cost(currentNode->coordinateValues.first,currentNode->coordinateValues.second,
     currentNode->f, currentNode->g, currentNode->h);
@@ -151,13 +141,11 @@ Node::~Node() {
         delete rootNode;
         rootNode = temp;
     }
-    std::cout << currentNode->coordinateValues.first << ' ';
-    std::cout << currentNode->coordinateValues.second << std::endl;
     delete targetNode; 
     rootNode = nullptr;
     currentNode = nullptr;
     targetNode = nullptr;
     temp = nullptr;
-    std::cout << "Destructor called " << std::endl;
+    
 }
 
