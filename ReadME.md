@@ -30,7 +30,11 @@ Conform to my initial architecture -- [Architecture](https://gyazo.com/8673c4d30
 ## Installation
 
 ```bash
+cd ~/Desktop
+mkdir temp
+cd temp
 git clone https://github.com/AlexIsOpAf/A-star-path.git
+cd A-star-path
 g++ -Wall -Wextra -Wpedantic -std=c++17 src/main.cpp src/Matrix.cpp src/Node.cpp -I includes/
 ./a.out
 ```
